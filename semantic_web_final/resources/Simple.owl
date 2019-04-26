@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#"
+     xml:base="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-9="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#enroll -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#enroll">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#teaches -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#teaches">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#professor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#course_credits -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#course_credits">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#course_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#course_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#course_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#course_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#professor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#professor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#person"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Data_Modelling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Data_Modelling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+        <course_credits>4</course_credits>
+        <course_id>T2-603</course_id>
+        <course_name>Data Modelling</course_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Databases -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Databases">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+        <course_credits>4</course_credits>
+        <course_id>T1-601</course_id>
+        <course_name>Database Management System</course_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#GSR -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#GSR">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#professor"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Machine_Learning"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Probabilistic_Graphic_Models"/>
+        <id>P1</id>
+        <person_name>Srinivas Raghavan</person_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Machine_Learning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Machine_Learning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+        <course_credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</course_credits>
+        <course_id>T1-401</course_id>
+        <course_name>Machine Learning</course_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Probabilistic_Graphic_Models -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Probabilistic_Graphic_Models">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#courses"/>
+        <course_credits>4</course_credits>
+        <course_id>T2-403</course_id>
+        <course_name>Probabilistic Graphic Models</course_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#RC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#RC">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#professor"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Data_Modelling"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Databases"/>
+        <id>P2</id>
+        <person_name>Ramanathan Chandrashekhar</person_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Data_Modelling"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Machine_Learning"/>
+        <id>s1</id>
+        <person_name>Deepak</person_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Data_Modelling"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Databases"/>
+        <id>s2</id>
+        <person_name>saicharan</person_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Machine_Learning"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Probabilistic_Graphic_Models"/>
+        <id>s3</id>
+        <person_name>prabhanjan</person_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#student"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Data_Modelling"/>
+        <enroll rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/untitled-ontology-9#Probabilistic_Graphic_Models"/>
+        <id>s4</id>
+        <person_name>ankit</person_name>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

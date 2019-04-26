@@ -1,0 +1,681 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#"
+     xml:base="http://www.semanticweb.org/deepakd/ontologies/2019/3/university"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:university="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsCourse -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsCourse">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isEnrolledBy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsDegree -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsDegree">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#handles -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#handles">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teaching_Assistant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isEnrolledBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isEnrolledBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isLocatedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isTaughtBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isTaughtBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#teaches"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#offersCourse -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#offersCourse">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#offersDegree -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#offersDegree">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#University"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#teaches -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#teaches">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#worksUnder -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#worksUnder">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Research_Assistant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#courseCredits -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#courseCredits">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#courseHours -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#courseHours">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#courseName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#courseName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#degreeDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#degreeDuration">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#degreeName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#degreeName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#email -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#email">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personGender -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personGender">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personId -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personId">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#regionName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#regionName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#studentCGPA -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#studentCGPA">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#universityName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#universityName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#University"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#offersCourse"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Doctorate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Doctorate">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Masters -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Masters">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Research_Assistant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Research_Assistant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#worksUnder"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teaching_Assistant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsCourse"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsDegree"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#teaches"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teaching_Assistant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teaching_Assistant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#handles"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#University -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#University">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isLocatedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#offersDegree"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#universityName"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Algorithms -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Algorithms">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <courseCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</courseCredits>
+        <courseHours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</courseHours>
+        <courseName>Algorithms</courseName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Andy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Andy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling"/>
+        <enrollsDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Master_of_Technology"/>
+        <email>andy@iiitb.org</email>
+        <personGender>M</personGender>
+        <personId>MT2018001</personId>
+        <personName>Andy Robertson</personName>
+        <studentCGPA rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</studentCGPA>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor_of_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor_of_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor"/>
+        <offersCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Algorithms"/>
+        <offersCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataBase_Management_System"/>
+        <degreeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</degreeDuration>
+        <degreeName>Bachelor of Engineering</degreeName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Banglore -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Banglore">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
+        <isLocatedIn rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Karnataka"/>
+        <regionName>Banglore</regionName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataBase_Management_System -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataBase_Management_System">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <courseCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</courseCredits>
+        <courseHours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</courseHours>
+        <courseName>Database Management System</courseName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <courseCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</courseCredits>
+        <courseHours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</courseHours>
+        <courseName>Data Modelling</courseName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#GSR -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#GSR">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Machine_Learning"/>
+        <email>gsr@iiitb.org</email>
+        <personGender>M</personGender>
+        <personId>T101</personId>
+        <personName>G Srinivas Raghavan</personName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#IIIT_Banglore -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#IIIT_Banglore">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#University"/>
+        <isLocatedIn rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Banglore"/>
+        <offersDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor_of_Engineering"/>
+        <offersDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Master_of_Technology"/>
+        <offersDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Phd_ComputerScience"/>
+        <universityName>IIIT Banglore</universityName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#India -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#India">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
+        <regionName>India</regionName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Karnataka -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Karnataka">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
+        <isLocatedIn rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#India"/>
+        <regionName>Karnataka</regionName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Klopp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Klopp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Machine_Learning"/>
+        <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML"/>
+        <enrollsDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Phd_ComputerScience"/>
+        <email>klopp@iiit.org</email>
+        <personGender>M</personGender>
+        <personId>PH2018001</personId>
+        <personName>Jurgen Klopp</personName>
+        <studentCGPA rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</studentCGPA>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Machine_Learning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Machine_Learning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <courseCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</courseCredits>
+        <courseHours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</courseHours>
+        <courseName>Machine Learning</courseName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Master_of_Technology -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Master_of_Technology">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Masters"/>
+        <offersCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling"/>
+        <offersCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Machine_Learning"/>
+        <offersCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML"/>
+        <degreeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</degreeDuration>
+        <degreeName>Master of Technology</degreeName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+        <courseCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</courseCredits>
+        <courseHours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</courseHours>
+        <courseName>Maths for Machine Learning</courseName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Muralidharan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Muralidharan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Algorithms"/>
+        <email>murali@iiitb.org</email>
+        <personGender>M</personGender>
+        <personId>T102</personId>
+        <personName>V N Muralidharan</personName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Phd_ComputerScience -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Phd_ComputerScience">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Doctorate"/>
+        <offersCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Machine_Learning"/>
+        <offersCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML"/>
+        <degreeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</degreeDuration>
+        <degreeName>Doctrate in Computer Science</degreeName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#RC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#RC">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataBase_Management_System"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling"/>
+        <email>rc@iiitb.org</email>
+        <personGender>M</personGender>
+        <personId>T104</personId>
+        <personName>Chandrasekar Ramanathan</personName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Ram -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Ram">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML"/>
+        <email>ram@iiitb.org</email>
+        <personGender>M</personGender>
+        <personId>T103</personId>
+        <personName>Ram Subramanian</personName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Roberto -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Roberto">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Algorithms"/>
+        <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataBase_Management_System"/>
+        <enrollsDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor_of_Engineering"/>
+        <email>firmino@iiitb.org</email>
+        <personGender>M</personGender>
+        <personId>IMT2018011</personId>
+        <personName>Roberto Firmino</personName>
+        <studentCGPA rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</studentCGPA>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Salah -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Salah">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling"/>
+        <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML"/>
+        <enrollsDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Master_of_Technology"/>
+        <email>salah@iiitb.org</email>
+        <personGender>M</personGender>
+        <personId>MT2018003</personId>
+        <personName>Mohammed Salah</personName>
+        <studentCGPA rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</studentCGPA>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Doctorate"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Masters"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

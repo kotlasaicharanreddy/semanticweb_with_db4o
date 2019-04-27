@@ -50,6 +50,7 @@ public class OwlApi_Class {
 	ArrayList<Course> courselist;
 	ArrayList<Student> studentlist;
 	ArrayList<DegreeProgram> degreelist;
+	ArrayList<Region> regionlist;
 	ArrayList<Class> classlist;
 	ObjectContainer database;
 	public OwlApi_Class(String filepath)
@@ -62,6 +63,7 @@ public class OwlApi_Class {
 		courselist = new ArrayList<Course>();
 		studentlist = new ArrayList<Student>();
 		degreelist = new ArrayList<DegreeProgram>();
+		regionlist = new ArrayList<Region>();
 		classlist = new ArrayList<Class>();
 		database = Db4o.openFile("resources/Triples");
 	}
@@ -369,36 +371,63 @@ public class OwlApi_Class {
 				Triple<University, ObjectProperty, Region> tr6 = new Triple<University, ObjectProperty, Region>(uni, isLocatedIn, reg);
 				database.store(tr6);
 				triplestore.addTriple(tr6);
+				regionlist.add(reg);
+				
 			}
 			
 			
 		}
-
-		//get all the triples
-		/*ArrayList<Triple> tr = triplestore.getTriple();
 		
-		for(Triple t : tr)
+		//Banglore isLocatedIn Karnataka
+		Region reg = regionlist.get(0);
+		OWLNamedIndividual region = fac.getOWLNamedIndividual(IRI.create(reg.getNamespace()));
+		
+		OWLObjectPropertyImpl object_prop6 = new OWLObjectPropertyImpl(IRI.create(pm.getDefaultPrefix(),"isLocatedIn"));
+		Set<OWLNamedIndividual> regions = reasoner.getObjectPropertyValues((OWLNamedIndividual) region, object_prop6).getFlattened();
+		
+		for(OWLNamedIndividual location1 : regions)
 		{
-			System.out.println(t.getSubject()+"  "+t.getPredicate()+"   "+t.getObject());
-			System.out.println();
-		}*/
-		/*for(Professor prof : professorlist)
+			ObjectProperty isLocatedIn = new ObjectProperty(object_prop6.toStringID(),pm.getShortForm(object_prop6));
+			String namespace = location1.toStringID();
+			OWLDataProperty regionName = new OWLDataPropertyImpl(IRI.create(pm.getDefaultPrefix(), "regionName"));
+			Collection<OWLLiteral> region_Name = EntitySearcher.getDataPropertyValues(location1, regionName, localUni);
+			
+			Object rName[] = region_Name.toArray();
+			String regionname = rName[0].toString();
+			String rn = regionname.substring(1, regionname.length()-1);
+			Region loc = new Region(namespace, rn);
+			Triple<Region, ObjectProperty, Region> tr6 = new Triple<Region, ObjectProperty, Region>(reg, isLocatedIn, loc);
+			database.store(tr6);
+			triplestore.addTriple(tr6);
+			regionlist.add(loc);
+			
+		}
+		//Karnataka isLocatedIn India
+		reg = regionlist.get(1);
+		region = fac.getOWLNamedIndividual(IRI.create(reg.getNamespace()));
+		regions = reasoner.getObjectPropertyValues((OWLNamedIndividual) region, object_prop6).getFlattened();
+		
+		for(OWLNamedIndividual location1 : regions)
 		{
-			System.out.println(prof);
-		}*/
-		/*for(Course cour : courselist)
-		{
-			System.out.println(cour);
-		}*/
-	/*	for(Student st : studentlist)
-		{
-			System.out.println(st);
-		}*/
-		//for(DegreeProgram deg : degreelist)
-		//{
-		//	System.out.println(deg);
-		//}
+			ObjectProperty isLocatedIn = new ObjectProperty(object_prop6.toStringID(),pm.getShortForm(object_prop6));
+			String namespace = location1.toStringID();
+			OWLDataProperty regionName = new OWLDataPropertyImpl(IRI.create(pm.getDefaultPrefix(), "regionName"));
+			Collection<OWLLiteral> region_Name = EntitySearcher.getDataPropertyValues(location1, regionName, localUni);
+			
+			Object rName[] = region_Name.toArray();
+			String regionname = rName[0].toString();
+			String rn = regionname.substring(1, regionname.length()-1);
+			Region loc = new Region(namespace, rn);
+			Triple<Region, ObjectProperty, Region> tr6 = new Triple<Region, ObjectProperty, Region>(reg, isLocatedIn, loc);
+			database.store(tr6);
+			triplestore.addTriple(tr6);
+			regionlist.add(loc);
+			
+		}
+		
 		database.close();
+		System.out.println("Everything is stored as Triples");
+		System.out.println("----------------------------------------------------------------------------------------------------------------");
 	}
 
 }

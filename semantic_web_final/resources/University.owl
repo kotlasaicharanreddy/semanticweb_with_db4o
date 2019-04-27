@@ -62,7 +62,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isLocatedIn">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Region"/>
     </owl:ObjectProperty>

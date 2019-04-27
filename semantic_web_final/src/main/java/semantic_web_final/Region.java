@@ -12,7 +12,7 @@ public class Region {
 
 	@Override
 	public String toString() {
-		return "Region [namespace=" + namespace + ", regionName=" + regionName + "]";
+		return "Region [regionName=" + regionName + "]";
 	}
 
 	public String getNamespace() {
@@ -30,5 +30,13 @@ public class Region {
 	public void setRegionName(String regionName) {
 		this.regionName = regionName;
 	}
-
+	public boolean equals(Object obj) {
+	    if (obj == null) return false;
+	    if (!(obj instanceof Region))
+	        return false;
+	    if (obj == this)
+	        return true;
+	    Region reg = (Region) obj;
+	    return this.regionName.equals(reg.regionName);
+	}
 }

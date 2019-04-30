@@ -1,6 +1,6 @@
 package semantic_web_final;
 
-public class Class {
+public class Classes {
 	String IRI;
 	String classname;
 	public String getIRI() {
@@ -15,7 +15,7 @@ public class Class {
 	public void setClassname(String classname) {
 		this.classname = classname;
 	}
-	Class (String IRI , String classname)
+	Classes (String IRI , String classname)
 	{
 		IRI = this.IRI;
 		classname = this.classname;
@@ -29,11 +29,11 @@ public class Class {
 	{
 		if(obj == null)
 			return false;
-		if(!(obj instanceof Class))
+		if(!(obj instanceof Classes))
 			return false;
 		if(this == obj)
 			return true;
-		Class cla = (Class) obj;
+		Classes cla = (Classes) obj;
 		return this.IRI.equals(cla.IRI);
 	}
 

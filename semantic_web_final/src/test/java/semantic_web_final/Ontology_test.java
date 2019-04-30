@@ -1,5 +1,4 @@
 package semantic_web_final;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -18,22 +17,24 @@ import com.db4o.ObjectSet;
 
 public class Ontology_test {
 
-	public static void main(String[] args) throws OWLOntologyCreationException, IOException {
+	public static void main(String[] args) throws OWLOntologyCreationException, IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
-		OwlApi_Class owl = new OwlApi_Class("resources/University.owl");
-		owl.get_Classes();
+/*	OwlApi_Class owl = new OwlApi_Class("resources/University.owl");
+		owl.get_Classes();*/
 		
-		Scanner sc =new Scanner(System.in);
-;		addtransitiveTriple("IIIT Banglore", ":"+"isLocatedIn", "Karnataka");
+		//Scanner sc =new Scanner(System.in);
+		//addtransitiveTriple("IIIT Banglore", ":"+"isLocatedIn", "Karnataka");
+		Helper.front();
+		//String name = sc.next();
+		//Helper.getInstancesFromClass(name);
 	
-		
-	}
+		}
 	public static void isTaughtBy(String prof_name, String predicate, String course)
 	{
 		String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
 		ObjectContainer database = Db4o.openFile("resources/Triples");
 		Query query = database.query();
-		query.constrain(Triple.class);
+		query.constrain( Triple.class);
 		query.descend("predicate").descend("propertyname").constrain(predicate);
 		ObjectSet<Triple> objset= query.execute();
 		int flag = 0;
@@ -73,6 +74,7 @@ public class Ontology_test {
 			for(Triple tr : object_set)
 			{
 				System.out.println(tr);
+				//
 			}
 		}
 				

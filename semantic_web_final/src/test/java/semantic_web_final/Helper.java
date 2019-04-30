@@ -38,7 +38,7 @@ class Helper {
 	                    break;
 	            case 2: System.out.println("Enter the name of the Object Property");
 	                    name=buff.readLine();
-	                    getTuplesByPredicate(name);
+	                    getTriplesByPredicate(name);
 	                    break;
 	            case 3: System.out.println("Enter Subject"); 
 	                    subject=buff.readLine();
@@ -162,7 +162,8 @@ class Helper {
 	        invmap.put("isEnrolledBy", "enrolls");
 	        invmap.put("enrolls", "isEnrolledBy");
 	}
-   public static void getTuplesByPredicate(String predicate)
+	//function to get all the Triples with a specific predicate
+   public static void getTriplesByPredicate(String predicate)
 	{
 	   int flag=0;
 	    predicate = ":"+predicate;
@@ -184,6 +185,7 @@ class Helper {
 		}
 		database.close();
 	}
+   //function to get all the instances of the specified class
 public static void getInstancesFromClass(String name) throws ClassNotFoundException {
 	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
 	ObjectContainer database = Db4o.openFile("resources/Triples");
@@ -197,6 +199,7 @@ public static void getInstancesFromClass(String name) throws ClassNotFoundExcept
 	}
 	database.close();
 }
+//GENERIC function to deal with inverse properties
 public static void inverse(String subject, String predicate, String object) throws ClassNotFoundException, InstantiationException, IllegalAccessException
 {
 	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
@@ -230,6 +233,7 @@ public static void inverse(String subject, String predicate, String object) thro
 	}
 	
 }
+//function to print a specific tuple(if present)
 public static void printTuples(String subject, String predicate, String object)
 {
 	ObjectContainer database = Db4o.openFile("resources/Triples");
@@ -250,6 +254,7 @@ public static void printTuples(String subject, String predicate, String object)
 	}
 	database.close();
 }
+//function to check whether a specific tuple is present or not
 public static int isTuplePresent(String subject, String predicate, String object)
 {
 	ObjectContainer database = Db4o.openFile("resources/Triples");
@@ -271,6 +276,7 @@ public static int isTuplePresent(String subject, String predicate, String object
 		}
 	
 }
+//GENERIC function to deal with Symmetric Properties
 public static void symmetric(String subject, String predicate, String object) throws IOException
 {
 	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
@@ -312,6 +318,7 @@ public static void symmetric(String subject, String predicate, String object) th
 		    
 	}
 }
+//To deal with Transitive Property
 public static void addtransitiveTriple(String Subject,String Predicate,String Object)
 {
 	Predicate = ":"+Predicate;

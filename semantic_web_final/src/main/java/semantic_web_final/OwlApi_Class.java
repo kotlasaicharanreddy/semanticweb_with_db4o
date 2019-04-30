@@ -21,6 +21,7 @@ import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -52,6 +53,8 @@ public class OwlApi_Class {
 	ArrayList<DegreeProgram> degreelist;
 	ArrayList<Region> regionlist;
 	ArrayList<Class> classlist;
+	ArrayList<University> universitylist;
+	ArrayList<Paper> paperlist;
 	ObjectContainer database;
 	public OwlApi_Class(String filepath)
 	{
@@ -64,6 +67,7 @@ public class OwlApi_Class {
 		studentlist = new ArrayList<Student>();
 		degreelist = new ArrayList<DegreeProgram>();
 		regionlist = new ArrayList<Region>();
+		universitylist = new ArrayList<University>();
 		classlist = new ArrayList<Class>();
 		database = Db4o.openFile("resources/Triples");
 	}
@@ -287,6 +291,7 @@ public class OwlApi_Class {
 			University uni = new University(uni_namespace, uni_name);
 			OWLObjectPropertyImpl object_prop4 = new OWLObjectPropertyImpl(IRI.create(pm.getDefaultPrefix(),"offersDegree"));
 			Set<OWLNamedIndividual> degrees = reasoner.getObjectPropertyValues((OWLNamedIndividual) university, object_prop4).getFlattened();
+			universitylist.add(uni);
 			
 			for(OWLIndividual degree : degrees)
 			{
@@ -424,6 +429,151 @@ public class OwlApi_Class {
 			regionlist.add(loc);
 			
 		}
+		
+        OWLObjectProperty object_prop7 = fac.getOWLObjectProperty(IRI.create(pm.getDefaultPrefix(),"isClassmateOf"));
+		
+		for(Student subject : studentlist)
+		{
+			OWLNamedIndividual student1 = fac.getOWLNamedIndividual(IRI.create(subject.getIRI()));
+			Set<OWLNamedIndividual> studs = reasoner.getObjectPropertyValues((OWLNamedIndividual) student1, object_prop7).getFlattened();
+			if(!(studs.isEmpty()))
+			{
+				for(OWLNamedIndividual obj : studs)
+				{
+					ObjectProperty isClassmateOf = new ObjectProperty(object_prop7.toStringID(), pm.getShortForm(object_prop7));
+					String namespace = obj.toStringID();
+					Student stu2= new Student(namespace,null,null,null,null,null);
+					int index = studentlist.indexOf(stu2);
+					Student object = studentlist.get(index);
+					Triple<Student,ObjectProperty,Student> triple = new Triple<Student,ObjectProperty,Student>(subject,isClassmateOf,object);
+					//System.out.println(triple);
+					database.store(triple);
+					triplestore.addTriple(triple);
+				}
+			}
+		}
+		
+		OWLObjectProperty object_prop8 = fac.getOWLObjectProperty(IRI.create(pm.getDefaultPrefix(), "worksFor"));
+		
+		for(Professor subject : professorlist)
+		{
+			OWLNamedIndividual professor1 = fac.getOWLNamedIndividual(IRI.create(subject.getIRI()));
+			Set<OWLNamedIndividual> uni = reasoner.getObjectPropertyValues(professor1, object_prop8).getFlattened();
+			for(OWLNamedIndividual obj : uni)
+			{
+				ObjectProperty worksFor = new ObjectProperty(object_prop8.toStringID(), pm.getShortForm(object_prop8));
+				String namespace = obj.toStringID();
+				University university = new University(namespace,null);
+				int index = universitylist.indexOf(university);
+				University object = universitylist.get(index);
+				Triple<Professor,ObjectProperty,University> triple = new Triple<Professor,ObjectProperty,University>(subject,worksFor,object);
+				//System.out.println(triple);
+				database.store(triple);
+				triplestore.addTriple(triple);
+			}
+		}
+		
+		OWLObjectProperty object_prop9 = fac.getOWLObjectProperty(IRI.create(pm.getDefaultPrefix(),"colleagueOf"));
+		
+		for(Professor subject : professorlist)
+		{
+			//System.out.println(subject+"isClassmate Of:");
+			OWLNamedIndividual professor1 = fac.getOWLNamedIndividual(IRI.create(subject.getIRI()));
+			Set<OWLNamedIndividual> prof = reasoner.getObjectPropertyValues((OWLNamedIndividual) professor1, object_prop9).getFlattened();
+			if(!(prof.isEmpty()))
+			{
+				for(OWLNamedIndividual obj : prof)
+				{
+					ObjectProperty colleagueOf = new ObjectProperty(object_prop9.toStringID(), pm.getShortForm(object_prop9));
+					String namespace = obj.toStringID();
+					Professor prof2= new Professor(namespace,null,null,null,null);
+					int index = professorlist.indexOf(prof2);
+					Professor object = professorlist.get(index);
+					Triple<Professor,ObjectProperty,Professor> triple = new Triple<Professor,ObjectProperty,Professor>(subject,colleagueOf,object);
+					//System.out.println(triple);
+					database.store(triple);
+					triplestore.addTriple(triple);
+				}
+			}
+		}
+		
+        OWLObjectProperty object_prop10 = fac.getOWLObjectProperty(IRI.create(pm.getDefaultPrefix(),"publishes"));
+		
+		for(Professor subject : professorlist)
+		{
+			//System.out.println(subject+"isClassmate Of:");
+			OWLNamedIndividual professor1 = fac.getOWLNamedIndividual(IRI.create(subject.getIRI()));
+			Set<OWLNamedIndividual> papers = reasoner.getObjectPropertyValues((OWLNamedIndividual) professor1, object_prop10).getFlattened();
+			if(!(papers.isEmpty()))
+			{
+				for(OWLNamedIndividual obj1 : papers)
+				{
+					ObjectProperty publishes = new ObjectProperty(object_prop10.toStringID(), pm.getShortForm(object_prop10));
+					String namespace = obj1.toStringID();
+					
+					OWLDataProperty paperId = new OWLDataPropertyImpl(IRI.create(pm.getDefaultPrefix(), "paperId"));
+					Collection<OWLLiteral> paper_Id = EntitySearcher.getDataPropertyValues(obj1, paperId, localUni);
+					
+					Object pId[] = paper_Id.toArray();
+					String paperid = pId[0].toString();
+					String papid = paperid.substring(1, paperid.length()-1);
+					
+					OWLDataProperty paperName= new OWLDataPropertyImpl(IRI.create(pm.getDefaultPrefix(), "paperName"));
+					Collection<OWLLiteral> paper_Name = EntitySearcher.getDataPropertyValues(obj1, paperName, localUni);
+					
+					Object pName[] = paper_Name.toArray();
+					String papername = pName[0].toString();
+					String papname = papername.substring(1, papername.length()-1);
+					
+					OWLDataProperty pubName = new OWLDataPropertyImpl(IRI.create(pm.getDefaultPrefix(), "publisherName"));
+					Collection<OWLLiteral> pub_Name = EntitySearcher.getDataPropertyValues(obj1, pubName, localUni);
+					
+					Object publishName[] = pub_Name.toArray();
+					String pubname= publishName[0].toString();
+					String publisherName = pubname.substring(1, pubname.length()-1);
+							
+					Paper ppr = new Paper(namespace,papid,papname,publisherName);
+					Triple<Professor,ObjectProperty,Paper> triple = new Triple<Professor,ObjectProperty,Paper>(subject,publishes,ppr);
+					database.store(triple);
+					triplestore.addTriple(triple);
+				}
+			}
+		}
+		
+		 OWLObjectProperty object_prop11 = fac.getOWLObjectProperty(IRI.create(pm.getDefaultPrefix(),"coordinates"));
+			
+			for(Professor subject : professorlist)
+			{
+				OWLNamedIndividual professor1 = fac.getOWLNamedIndividual(IRI.create(subject.getIRI()));
+				Set<OWLNamedIndividual> degprg = reasoner.getObjectPropertyValues((OWLNamedIndividual) professor1, object_prop11).getFlattened();
+				if(!(degprg.isEmpty()))
+				{
+					for(OWLNamedIndividual obj1 : degprg)
+					{
+						ObjectProperty coordinates = new ObjectProperty(object_prop11.toStringID(), pm.getShortForm(object_prop11));
+						String namespace = obj1.toStringID();
+						
+						OWLDataProperty degDur = new OWLDataPropertyImpl(IRI.create(pm.getDefaultPrefix(), "degreeDuration"));
+						Collection<OWLLiteral> deg_Dur = EntitySearcher.getDataPropertyValues(obj1, degDur, localUni);
+						
+						Object degreedur[] = deg_Dur.toArray();
+						String degdur= degreedur[0].toString();
+						String degreeDuration = degdur.substring(1, degdur.length()-1);
+						
+						OWLDataProperty degName= new OWLDataPropertyImpl(IRI.create(pm.getDefaultPrefix(), "degreeName"));
+						Collection<OWLLiteral> deg_name = EntitySearcher.getDataPropertyValues(obj1, degName, localUni);
+						
+						Object degreename[] = deg_name.toArray();
+						String degname = degreename[0].toString();
+						String degree_Name = degname.substring(1, degname.length()-1);
+								
+						DegreeProgram degpr = new DegreeProgram(namespace,degreeDuration,degree_Name);
+						Triple<Professor,ObjectProperty,DegreeProgram> triple = new Triple<Professor,ObjectProperty,DegreeProgram>(subject,coordinates,degpr);
+						database.store(triple);
+						triplestore.addTriple(triple);
+					}
+				}
+			}
 		
 		database.close();
 		System.out.println("Everything is stored as Triples");

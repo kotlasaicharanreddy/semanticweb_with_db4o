@@ -55,4 +55,14 @@ public class Professor {
 	public String toString() {
 		return "Professor [name=" + name + "]";
 	}
+	
+	public boolean equals(Object obj) {
+	    if (obj == null) return false;
+	    if (!(obj instanceof Professor))
+	        return false;
+	    if (obj == this)
+	        return true;
+	    Professor stu = (Professor) obj;
+	    return this.IRI.equals(stu.IRI);
+	}
 }

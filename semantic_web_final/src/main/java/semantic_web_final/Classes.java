@@ -2,27 +2,27 @@ package semantic_web_final;
 
 public class Classes {
 	String IRI;
-	String classname;
+	String name;
 	public String getIRI() {
 		return IRI;
 	}
 	public void setIRI(String iRI) {
 		IRI = iRI;
 	}
-	public String getClassname() {
-		return classname;
+	public String getname() {
+		return name;
 	}
-	public void setClassname(String classname) {
-		this.classname = classname;
+	public void setname(String name) {
+		this.name = name;
 	}
-	Classes (String IRI , String classname)
+	Classes (String IRI , String name)
 	{
 		IRI = this.IRI;
-		classname = this.classname;
+		name = this.name;
 	}
 	@Override
 	public String toString() {
-		return "Class [IRI=" + IRI + ", classname=" + classname + "]";
+		return "Class [IRI=" + IRI + ", name=" + name + "]";
 	}
 	
 	public boolean equals(Object obj)

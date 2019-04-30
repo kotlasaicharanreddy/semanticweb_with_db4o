@@ -22,6 +22,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#colleagueOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#colleagueOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#coordinates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#coordinates">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsCourse -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#enrollsCourse">
@@ -46,6 +64,15 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#handles">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teaching_Assistant"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isClassmateOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isClassmateOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
     </owl:ObjectProperty>
     
 
@@ -97,12 +124,30 @@
     
 
 
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#publishes -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#publishes">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#teaches -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#teaches">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#worksFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#worksFor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#University"/>
     </owl:ObjectProperty>
     
 
@@ -181,6 +226,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#paperId -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#paperId">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#paperName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#paperName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personGender -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personGender">
@@ -205,6 +268,15 @@
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#personName">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#publisherName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#publisherName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -289,6 +361,12 @@
     <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Masters">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DegreeProgram"/>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
     
 
 
@@ -423,6 +501,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
         <enrollsCourse rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling"/>
         <enrollsDegree rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Master_of_Technology"/>
+        <isClassmateOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Salah"/>
         <email>andy@iiitb.org</email>
         <personGender>M</personGender>
         <personId>MT2018001</personId>
@@ -465,6 +544,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataWare_House_Systems -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataWare_House_Systems">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
+        <paperId>IEEE-789-123</paperId>
+        <paperName>DataWare House Management Systems</paperName>
+        <publisherName>IEEE</publisherName>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling">
@@ -480,11 +570,24 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#GSR">
         <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <publishes rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Probabilistic_Models"/>
         <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Machine_Learning"/>
+        <worksFor rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#IIIT_Banglore"/>
         <email>gsr@iiitb.org</email>
         <personGender>M</personGender>
         <personId>T101</personId>
         <personName>G Srinivas Raghavan</personName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Hidden_Markov_Models -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Hidden_Markov_Models">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
+        <paperId>IEEE-608-111</paperId>
+        <paperName>Hidden Markov Models</paperName>
+        <publisherName>IEEE</publisherName>
     </owl:NamedIndividual>
     
 
@@ -576,7 +679,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Muralidharan">
         <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <coordinates rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Master_of_Technology"/>
+        <publishes rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Shortest_Path_Algorithms"/>
         <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Algorithms"/>
+        <worksFor rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#IIIT_Banglore"/>
         <email>murali@iiitb.org</email>
         <personGender>M</personGender>
         <personId>T102</personId>
@@ -597,12 +703,27 @@
     
 
 
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Probabilistic_Models -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Probabilistic_Models">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
+        <paperId>IEEE-565-009</paperId>
+        <paperName>Probabilistic Graphic Models</paperName>
+        <publisherName>IEEE</publisherName>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#RC -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#RC">
         <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <colleagueOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#GSR"/>
+        <coordinates rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor_of_Engineering"/>
+        <publishes rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataWare_House_Systems"/>
         <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataBase_Management_System"/>
         <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling"/>
+        <worksFor rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#IIIT_Banglore"/>
         <email>rc@iiitb.org</email>
         <personGender>M</personGender>
         <personId>T104</personId>
@@ -615,7 +736,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Ram">
         <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <publishes rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Hidden_Markov_Models"/>
         <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Maths_for_ML"/>
+        <worksFor rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#IIIT_Banglore"/>
         <email>ram@iiitb.org</email>
         <personGender>M</personGender>
         <personId>T103</personId>
@@ -652,6 +775,17 @@
         <personId>MT2018003</personId>
         <personName>Mohammed Salah</personName>
         <studentCGPA rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</studentCGPA>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Shortest_Path_Algorithms -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Shortest_Path_Algorithms">
+        <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Paper"/>
+        <paperId>IEEE-909-145</paperId>
+        <paperName>Shortest Path Algorithm</paperName>
+        <publisherName>IEEE</publisherName>
     </owl:NamedIndividual>
     
 

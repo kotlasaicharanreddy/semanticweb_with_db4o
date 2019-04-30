@@ -2,17 +2,17 @@ package semantic_web_final;
 
 public class Region {
 	String namespace;
-	String regionName;
+	String name;
 	
 	public Region(String namespace, String rn) {
 		this.namespace = namespace;
-		this.regionName = rn;
+		this.name = rn;
 		
 	}
 
 	@Override
 	public String toString() {
-		return "Region [regionName=" + regionName + "]";
+		return "Region [name=" + name + "]";
 	}
 
 	public String getNamespace() {
@@ -23,12 +23,12 @@ public class Region {
 		this.namespace = namespace;
 	}
 
-	public String getRegionName() {
-		return regionName;
+	public String getname() {
+		return name;
 	}
 
-	public void setRegionName(String regionName) {
-		this.regionName = regionName;
+	public void setname(String name) {
+		this.name = name;
 	}
 	public boolean equals(Object obj) {
 	    if (obj == null) return false;
@@ -37,6 +37,6 @@ public class Region {
 	    if (obj == this)
 	        return true;
 	    Region reg = (Region) obj;
-	    return this.regionName.equals(reg.regionName);
+	    return this.name.equals(reg.name);
 	}
 }

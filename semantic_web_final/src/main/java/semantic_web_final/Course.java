@@ -3,13 +3,13 @@ package semantic_web_final;
 public class Course {
 	String courseCredits;
 	String courseHours;
-	String courseName;
+	String name;
 	String IRI;
-	Course(String courseCredits, String courseHours, String courseName, String IRI)
+	Course(String courseCredits, String courseHours, String name, String IRI)
 	{
 		this.courseCredits = courseCredits;
 		this.courseHours = courseHours;
-		this.courseName = courseName;
+		this.name = name;
 		this.IRI = IRI;
 	}
 	
@@ -29,12 +29,12 @@ public class Course {
 		this.courseHours = courseHours;
 	}
 
-	public String getCourseName() {
-		return courseName;
+	public String getname() {
+		return name;
 	}
 
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+	public void setname(String name) {
+		this.name = name;
 	}
 
 	public String getIRI() {
@@ -47,7 +47,7 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [courseName=" + courseName + "]";
+		return "Course [name=" + name + "]";
 	}
 	public boolean equals(Object obj) {
 	    if (obj == null) return false;

@@ -3,12 +3,12 @@ package semantic_web_final;
 public class DegreeProgram {
 	String IRI;
 	String degreeDuration;
-	String degreeName;
-	DegreeProgram(String IRI, String degreeDuration, String degreeName)
+	String name;
+	DegreeProgram(String IRI, String degreeDuration, String name)
 	{
 		this.IRI = IRI;
 		this.degreeDuration = degreeDuration;
-		this.degreeName = degreeName;
+		this.name = name;
 	}
 	public String getIRI() {
 		return IRI;
@@ -22,16 +22,16 @@ public class DegreeProgram {
 	public void setDegreeDuration(String degreeDuration) {
 		this.degreeDuration = degreeDuration;
 	}
-	public String getDegreeName() {
-		return degreeName;
+	public String getname() {
+		return name;
 	}
-	public void setDegreeName(String degreeName) {
-		this.degreeName = degreeName;
+	public void setname(String name) {
+		this.name = name;
 	}
 	
 	@Override
 	public String toString() {
-		return "DegreeProgram [degreeName=" + degreeName + "]";
+		return "DegreeProgram [name=" + name + "]";
 	}
 	public boolean equals(Object obj)
 	{

@@ -416,3 +416,4 @@ public static void addtransitiveTriple(String Subject,String Predicate,String Ob
 		} 
 	database.close();
 	}
+}

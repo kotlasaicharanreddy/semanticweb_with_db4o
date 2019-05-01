@@ -13,7 +13,7 @@ public class Paper {
 		this.name = name;
 		this.publisherName = publisherName;
 	}
-
+ 
 	public String getIRI() {
 		return IRI;
 	}

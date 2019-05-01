@@ -56,7 +56,7 @@ class Helper {
 	            break;
 	   case 2: System.out.println("1. Inverse Properties");
 	           System.out.println("2. Transitive Properties");
-	           System.out.println("3. Inherite");
+	           System.out.println("3. Inheritance");
 	           System.out.println("4. Symmetric Properties");
 	           yachoice=sc.nextInt();
 	           switch(yachoice)
@@ -139,7 +139,7 @@ class Helper {
                         addtransitiveTriple(subject,"isLocatedIn",object); 
                         }
                        break;
-	           case 3: System.out.println("************Chains*****************");
+	           case 3: System.out.println("************Inheritance*****************");
 	        	        break;
 	           case 4: System.out.println("**************Symmetric Properties*****************");
 	                   System.out.println("1. isClassmateOf");
@@ -161,10 +161,6 @@ class Helper {
                 					 break;			
 	                   }
 	        	   break;
-	           case 5:System.out.println("**************Disjoint Properties*****************");
-	        	   break;
-	           default: System.out.println("You entered the wrong choice");
-	                    System.out.println("Exiting....");
 	           }
 	           choice=3;
 	           

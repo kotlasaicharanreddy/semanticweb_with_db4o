@@ -16,7 +16,7 @@ public class Classes {
 		this.name = name;
 	}
 	Classes (String IRI , String name)
-	{
+	{ 
 		IRI = this.IRI;
 		name = this.name;
 	}

@@ -574,6 +574,34 @@ public class OwlApi_Class {
 					}
 				}
 			}
+			
+			
+			// isa professor
+			//  Object profess = new Object();
+	          Classes profess = new Classes(pm.getDefaultPrefix()+"Professor","Professor");
+			  for(Professor pro : professorlist)
+			  {
+				  ObjectProperty isa = new ObjectProperty(pm.getDefaultPrefix()+"isa", ":isa");
+				  Triple<Professor,ObjectProperty,Classes> triple = new Triple<Professor,ObjectProperty,Classes>(pro,isa,profess);
+				  database.store(triple);
+				  triplestore.addTriple(triple);
+			  }
+			  
+	          Classes stud = new Classes(pm.getDefaultPrefix()+"Student","Student");
+			  for(Student st : studentlist)
+			  {
+				  ObjectProperty isa = new ObjectProperty(pm.getDefaultPrefix()+"isa", ":isa");
+				  Triple<Student,ObjectProperty,Classes> triple = new Triple<Student,ObjectProperty,Classes>(st,isa,stud);
+				  database.store(triple);
+				  triplestore.addTriple(triple);
+			  }
+			    
+			  Classes person = new Classes(pm.getDefaultPrefix()+"Person","Person");
+			  ObjectProperty isa = new ObjectProperty(pm.getDefaultPrefix()+"isa", ":isa");
+			  Triple<Classes,ObjectProperty,Classes> triple1 = new Triple<Classes,ObjectProperty,Classes>(profess,isa,person);
+			  Triple<Classes,ObjectProperty,Classes> triple2 = new Triple<Classes,ObjectProperty,Classes>(stud,isa,person);
+			  database.store(triple1);
+			  database.store(triple2);
 		
 		database.close();
 		System.out.println("Everything is stored as Triples");

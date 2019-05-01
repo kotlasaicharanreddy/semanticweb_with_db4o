@@ -1,4 +1,5 @@
 package semantic_web_final;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ import com.db4o.query.Query;
 class Helper {
    public static void front() throws ClassNotFoundException, IOException, InstantiationException, IllegalAccessException
    {
-	   int choice,yachoice,yayachoice;
+	   int choice,yachoice,yayachoice,inhertchoice;
 	   String name,subject,predicate,object;
 	   Scanner sc = new Scanner(System.in);
 	   BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
@@ -140,7 +141,16 @@ class Helper {
                         }
                        break;
 	           case 3: System.out.println("************Inheritance*****************");
-	        	        break;
+	           		   System.out.println("1. isa");
+	           		   inhertchoice=sc.nextInt();
+	                   if(inhertchoice==1) {
+	                	   getTriplesByPredicate("isa");
+	                	   System.out.println("Enter the indices of Triples on which you want to apply inheritance");
+	                	   int inhertx=sc.nextInt();
+	                	   int inherty=sc.nextInt();
+	                	   inheritProperty(inhertx,inherty);
+	                   }
+	                   break;
 	           case 4: System.out.println("**************Symmetric Properties*****************");
 	                   System.out.println("1. isClassmateOf");
 	                   System.out.println("2. isColleagueOf");
@@ -197,9 +207,10 @@ class Helper {
 		query.constrain(Triple.class);
 		query.descend("predicate").descend("propertyname").constrain(predicate);
 		ObjectSet<Triple> objset= query.execute();
+		int index=0;
 		for(Triple tr: objset)
 		{
-			System.out.println(tr);
+			System.out.println(index+++" "+tr);
 			flag=1;
 		}
 		if(flag==0)
@@ -411,4 +422,64 @@ public static void addtransitiveTriple(String Subject,String Predicate,String Ob
 		} 
 	database.close();
 	}
+public static void inheritProperty(int x,int y) {
+	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
+	Helper h =new Helper();
+	String predicate = "isa";
+	//getTriplesByPredicate("isa");
+	ArrayList<Triple> al = getTuplesByPredicateAslist(predicate);
+	if(al.get(x).getObject().equals(al.get(y).getSubject())) 
+	{
+	ObjectProperty isa = new ObjectProperty(defaultPrefix + "isa", ":isa");
+	Triple triple = new Triple<>(al.get(x).getSubject(),isa, al.get(y).getObject());
+	
+	ObjectContainer database = Db4o.openFile("resources/Triples");
+	Query exists = database.query();
+	exists.constrain(Triple.class);
+	exists.descend("subject").constrain(al.get(x).getSubject()).and(exists.descend("predicate").constrain(isa)).and(exists.descend("object").constrain(al.get(y).getObject()));
+	ObjectSet<Triple> objset = exists.execute();
+	if(!(objset.isEmpty())) {
+	
+	//ObjectContainer database = Db4o.openFile("resources/Triples");
+    System.out.println("Triple already exists:"+triple);
+	//database.store(triple);
+	}
+	else
+	{
+		System.out.println("Triple added to DB");
+		database.store(triple);
+	}
+	}
+	else
+	{
+		System.out.println("Could not apply inheritance on this tuples");
+	}
+	/*if (flag == 0)
+		System.out.println("No such Entry");*/
+//	database.close();
+}
+
+public static ArrayList<Triple> getTuplesByPredicateAslist(String predicate)
+{
+   int flag=0;
+    predicate = ":"+predicate;
+	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
+	ObjectContainer database = Db4o.openFile("resources/Triples");
+	ArrayList<Triple> alist = new ArrayList<>();
+	Query query = database.query();
+	query.constrain(Triple.class);
+	query.descend("predicate").descend("propertyname").constrain(predicate);
+	ObjectSet<Triple> objset= query.execute();
+	for(Triple tr: objset)
+	{
+		//System.out.println("gg"+ tr);
+		alist.add(tr);
+	}
+	database.close();
+	
+	return alist;
+	
+}
+
+
 }

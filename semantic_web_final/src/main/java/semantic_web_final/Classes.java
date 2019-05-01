@@ -17,12 +17,12 @@ public class Classes {
 	}
 	Classes (String IRI , String name)
 	{ 
-		IRI = this.IRI;
-		name = this.name;
+		this.IRI = IRI;
+		this.name = name;
 	}
 	@Override
 	public String toString() {
-		return "Class [IRI=" + IRI + ", name=" + name + "]";
+		return "Class [  name=" + name + "]";
 	}
 	
 	public boolean equals(Object obj)

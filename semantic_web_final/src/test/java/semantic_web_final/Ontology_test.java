@@ -16,9 +16,10 @@ import com.db4o.ObjectSet;
 public class Ontology_test {
 
 	public static void main(String[] args) throws OWLOntologyCreationException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-		/*  OwlApi_Class owl = new OwlApi_Class("resources/University.owl");
-		    owl.get_Classes();*/
+		  //OwlApi_Class owl = new OwlApi_Class("resources/University.owl");
+		    //owl.get_Classes();
 		Helper.front();
+		
 		}
 	}
 	

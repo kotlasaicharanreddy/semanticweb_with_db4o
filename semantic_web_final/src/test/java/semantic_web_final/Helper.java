@@ -71,7 +71,7 @@ class Helper {
 	                   System.out.println("5.isTaughtBy");
 	                   System.out.println("6.isPublishedBy");
 	                   System.out.println("7.isCoordinatedBy");
-	                   System.out.println("8.coordinates");
+	                   System.out.println("8.enrollsCourse");
 	                   yayachoice=sc.nextInt();
 	                   switch(yayachoice)
 	                   {
@@ -123,7 +123,7 @@ class Helper {
 	                   			subject=buff.readLine();
 	                   			System.out.println("Enter Object");
 	                   			object=buff.readLine();
-	                   			inverse(subject,"coordinates",object);
+	                   			inverse(subject,"enrollsCourse",object);
 	                   			break;		
 	                           
 	                   }
@@ -189,8 +189,8 @@ class Helper {
 	static {
 		    invmap.put("teaches","isTaughtBy");
 	        invmap.put("isTaughtBy","teaches");
-	        invmap.put("isEnrolledBy", "enrolls");
-	        invmap.put("enrolls", "isEnrolledBy");
+	        invmap.put("isEnrolledBy", "enrollsCourse");
+	        invmap.put("enrollsCourse", "isEnrolledBy");
 	        invmap.put("publishes","isPublishedBy");
 	        invmap.put("isPublishedBy","publishes");
 	        invmap.put("coordinates","isCoordinatedBy");
@@ -448,6 +448,7 @@ public static void inheritProperty(int x,int y) {
 	{
 		System.out.println("Triple added to DB");
 		database.store(triple);
+		database.close();
 	}
 	}
 	else

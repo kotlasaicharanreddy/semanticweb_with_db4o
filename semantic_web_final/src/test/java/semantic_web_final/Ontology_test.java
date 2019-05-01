@@ -16,8 +16,24 @@ import com.db4o.ObjectSet;
 public class Ontology_test {
 
 	public static void main(String[] args) throws OWLOntologyCreationException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-		  //OwlApi_Class owl = new OwlApi_Class("resources/University.owl");
-		    //owl.get_Classes();
+		ObjectContainer database = Db4o.openFile("resources/Triples");
+		ObjectSet<Triple> result=database.queryByExample(new Triple(null,null,null));
+		for(Object found : result)
+		{
+			Object subject = ((Triple<?, ?, ?>) found).getSubject();
+			Object predicate = ((Triple<?, ?, ?>) found).getPredicate();
+			Object object = ((Triple<?, ?, ?>) found).getObject();
+			database.delete(subject);
+			database.delete(predicate);
+			database.delete(object);
+			database.delete(found);
+		}
+		database.close(); 
+		
+		
+		
+		OwlApi_Class owl = new OwlApi_Class("resources/University.owl");
+		owl.get_Classes();
 		Helper.front();
 		
 		}

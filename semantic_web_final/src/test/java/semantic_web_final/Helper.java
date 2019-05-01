@@ -46,7 +46,7 @@ class Helper {
 	                    predicate=buff.readLine();
 	                    System.out.println("Enter Object");
 	                    object=buff.readLine();
-	                    printTuples(subject,predicate,object);
+	                    printTriples(subject,predicate,object);
 	                    break;
 	                    
 	            default: System.out.println("You entered the wrong choice");
@@ -56,9 +56,8 @@ class Helper {
 	            break;
 	   case 2: System.out.println("1. Inverse Properties");
 	           System.out.println("2. Transitive Properties");
-	           System.out.println("3. Chains");
+	           System.out.println("3. Inherite");
 	           System.out.println("4. Symmetric Properties");
-	           System.out.println("5. Disjoint Properties");
 	           yachoice=sc.nextInt();
 	           switch(yachoice)
 	           {
@@ -183,13 +182,13 @@ class Helper {
 	 static final HashMap<String,String> invmap = new HashMap<>(); 
 	static {
 		    invmap.put("teaches","isTaughtBy");
-	       invmap.put("isTaughtBy","teaches");
+	        invmap.put("isTaughtBy","teaches");
 	        invmap.put("isEnrolledBy", "enrolls");
 	        invmap.put("enrolls", "isEnrolledBy");
 	        invmap.put("publishes","isPublishedBy");
 	        invmap.put("isPublishedBy","publishes");
-	       invmap.put("coordinates","isCoordinatedBy");
-	       invmap.put("isCoordinatedBy","coordinates");
+	        invmap.put("coordinates","isCoordinatedBy");
+	        invmap.put("isCoordinatedBy","coordinates");
 	}
 	//function to get all the Triples with a specific predicate
    public static void getTriplesByPredicate(String predicate)
@@ -232,9 +231,9 @@ public static void getInstancesFromClass(String name) throws ClassNotFoundExcept
 public static void inverse(String subject, String predicate, String object) throws ClassNotFoundException, InstantiationException, IllegalAccessException
 {
 	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
-	int flag= isTuplePresent(subject,predicate,object);
+	int flag= isTriplePresent(subject,predicate,object);
 	String inv = invmap.get(predicate);
-	int outerflag=isTuplePresent(object,inv,subject);
+	int outerflag=isTriplePresent(object,inv,subject);
 	predicate= ":"+predicate;
 	if(flag==0)
 		System.out.println("Enter Valid Triple!");
@@ -263,8 +262,8 @@ public static void inverse(String subject, String predicate, String object) thro
 	}
 	
 }
-//function to print a specific tuple(if present)
-public static void printTuples(String subject, String predicate, String object)
+//function to print a specific triple(if present)
+public static void printTriples(String subject, String predicate, String object)
 {
 	ObjectContainer database = Db4o.openFile("resources/Triples");
 	predicate=":"+predicate;
@@ -284,8 +283,8 @@ public static void printTuples(String subject, String predicate, String object)
 	}
 	database.close();
 }
-//function to check whether a specific tuple is present or not
-public static int isTuplePresent(String subject, String predicate, String object)
+//function to check whether a specific triple is present or not
+public static int isTriplePresent(String subject, String predicate, String object)
 {
 	ObjectContainer database = Db4o.openFile("resources/Triples");
 	predicate=":"+predicate;
@@ -310,8 +309,8 @@ public static int isTuplePresent(String subject, String predicate, String object
 public static void symmetric(String subject, String predicate, String object) throws IOException
 {
 	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
-	int flag=  isTuplePresent(subject,predicate,object);
-	int symflag=isTuplePresent(object,predicate,subject);
+	int flag=  isTriplePresent(subject,predicate,object);
+	int symflag=isTriplePresent(object,predicate,subject);
 	String pred=predicate;
 	predicate=":"+predicate;
 	if(flag==0)
@@ -322,7 +321,7 @@ public static void symmetric(String subject, String predicate, String object) th
 			{
 			System.out.println("Symmetric Triple Already Present");
             System.out.println("Printing Triple");
-            printTuples(object,pred,subject);      
+            printTriples(object,pred,subject);      
 			}
 		else
 		{

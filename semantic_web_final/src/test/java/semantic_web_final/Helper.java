@@ -42,7 +42,9 @@ class Helper {
 	                    break;
 	            case 3: System.out.println("Enter Subject"); 
 	                    subject=buff.readLine();
+	                    System.out.println("Enter Predicate");
 	                    predicate=buff.readLine();
+	                    System.out.println("Enter Object");
 	                    object=buff.readLine();
 	                    printTuples(subject,predicate,object);
 	                    break;
@@ -65,8 +67,11 @@ class Helper {
 	                   System.out.println("1.teaches");
 	                   System.out.println("2.isEnrolledBy");
 	                   System.out.println("3.coordinates");
-	                   System.out.println("4.published");
+	                   System.out.println("4.publishes");
 	                   System.out.println("5.isTaughtBy");
+	                   System.out.println("6.isPublishedBy");
+	                   System.out.println("7.isCoordinatedBy");
+	                   System.out.println("8.coordinates");
 	                   yayachoice=sc.nextInt();
 	                   switch(yayachoice)
 	                   {
@@ -92,7 +97,7 @@ class Helper {
                        	  	   subject=buff.readLine();
                        	  	   System.out.println("Enter Object");
                        	  	   object=buff.readLine();
-                       	  	   inverse(subject,"published",object);
+                       	  	   inverse(subject,"publishes",object);
                        	  	   break; 
 	                   case 5: System.out.println("Enter Subject");
 	                   			subject=buff.readLine();
@@ -100,6 +105,26 @@ class Helper {
 	                   			object=buff.readLine();
 	                   			inverse(subject,"isTaughtBy",object);
 	                   			break;
+	                    	  	 
+	                   case 6: System.out.println("Enter Subject");
+	                   			subject=buff.readLine();
+	                   			System.out.println("Enter Object");
+	                   			object=buff.readLine();
+	                   			inverse(subject,"isPublishedBy",object);
+	                   			break;
+	                    	  	   
+	                   case 7: System.out.println("Enter Subject");
+	                   			subject=buff.readLine();
+	                   			System.out.println("Enter Object");
+	                   			object=buff.readLine();
+	                   			inverse(subject,"isCoordinatedBy",object);
+	                   			break;
+	                   case 8: System.out.println("Enter Subject");
+	                   			subject=buff.readLine();
+	                   			System.out.println("Enter Object");
+	                   			object=buff.readLine();
+	                   			inverse(subject,"coordinates",object);
+	                   			break;		
 	                           
 	                   }
 	        	      break;
@@ -112,14 +137,14 @@ class Helper {
                         subject=buff.readLine();
                         System.out.println("Enter Object");
                         object=buff.readLine();
-                        addtransitiveTriple(subject,"isLocatedIn",object);
+                        addtransitiveTriple(subject,"isLocatedIn",object); 
                         }
                        break;
 	           case 3: System.out.println("************Chains*****************");
 	        	        break;
 	           case 4: System.out.println("**************Symmetric Properties*****************");
 	                   System.out.println("1. isClassmateOf");
-	                   System.out.println("2. isCollegueOf");
+	                   System.out.println("2. isColleagueOf");
 	                   yayachoice=sc.nextInt();
 	                   switch(yayachoice)
 	                   {	    
@@ -133,7 +158,7 @@ class Helper {
                 					 subject=buff.readLine();
                 					 System.out.println("Enter Object");
                 					 object=buff.readLine();
-                					 symmetric(subject,"isCollegueOf",object);
+                					 symmetric(subject,"isColleagueOf",object);
                 					 break;			
 	                   }
 	        	   break;
@@ -161,6 +186,10 @@ class Helper {
 	       invmap.put("isTaughtBy","teaches");
 	        invmap.put("isEnrolledBy", "enrolls");
 	        invmap.put("enrolls", "isEnrolledBy");
+	        invmap.put("publishes","isPublishedBy");
+	        invmap.put("isPublishedBy","publishes");
+	       invmap.put("coordinates","isCoordinatedBy");
+	       invmap.put("isCoordinatedBy","coordinates");
 	}
 	//function to get all the Triples with a specific predicate
    public static void getTriplesByPredicate(String predicate)
@@ -229,6 +258,7 @@ public static void inverse(String subject, String predicate, String object) thro
 	    		    database.store(triple);
 	    		}
 	    		database.close();
+	    		System.out.println("Triple Added");
 	     }
 	}
 	
@@ -291,15 +321,12 @@ public static void symmetric(String subject, String predicate, String object) th
 		if(symflag==1)
 			{
 			System.out.println("Symmetric Triple Already Present");
-		    System.out.println("Want to print? (y/n)");
-			BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
-            if(buff.readLine()=="y")
-            {
-            	printTuples(object,predicate,subject);
-            }
+            System.out.println("Printing Triple");
+            printTuples(object,pred,subject);      
 			}
 		else
 		{
+			
 			ObjectContainer database = Db4o.openFile("resources/Triples");
     	    Query query = database.query();
     		query.constrain(Triple.class);
@@ -314,7 +341,9 @@ public static void symmetric(String subject, String predicate, String object) th
     		    database.store(triple);
     		}
     		database.close();
+    		System.out.println("Triple Added");
 		}
+		     
 		    
 	}
 }
@@ -328,7 +357,7 @@ public static void addtransitiveTriple(String Subject,String Predicate,String Ob
 	
 	Query exists = database.query();
 	exists.constrain(Triple.class);
-	exists.descend("subject").descend("universityName").constrain(Subject).and(exists.descend("predicate").descend("propertyname").constrain(Predicate)).and(exists.descend("object").descend("regionName").constrain(Object)).or(exists.descend("subject").descend("regionName").constrain(Subject).and(exists.descend("predicate").descend("propertyname").constrain(Predicate).and(exists.descend("object").descend("regionName").constrain(Object))));
+	exists.descend("subject").descend("name").constrain(Subject).and(exists.descend("predicate").descend("propertyname").constrain(Predicate)).and(exists.descend("object").descend("name").constrain(Object)).or(exists.descend("subject").descend("name").constrain(Subject).and(exists.descend("predicate").descend("propertyname").constrain(Predicate).and(exists.descend("object").descend("name").constrain(Object))));
 	ObjectSet<Triple> object_set = exists.execute();
 	
 	if(!(object_set.isEmpty()))
@@ -346,7 +375,7 @@ public static void addtransitiveTriple(String Subject,String Predicate,String Ob
 		int flag = 0;
 		Query query1 = database.query();
 		query1.constrain(Triple.class);
-		query1.descend("object").descend("regionName").constrain(Object);
+		query1.descend("object").descend("name").constrain(Object);
 		ObjectSet<Triple> objset1 = query1.execute();
 		
 		for(Triple tr : objset1)
@@ -355,7 +384,7 @@ public static void addtransitiveTriple(String Subject,String Predicate,String Ob
 			String object_name =((Region) tr.getSubject()).getname();
 			Query query2 = database.query();
 			query2.constrain(Triple.class);
-			query2.descend("object").descend("regionName").constrain(object_name);
+			query2.descend("object").descend("name").constrain(object_name);
 			ObjectSet<Triple> obj_set = query2.execute();
 			for(Triple triple : obj_set)
 			{
@@ -384,91 +413,6 @@ public static void addtransitiveTriple(String Subject,String Predicate,String Ob
 			System.out.println("Such entry cannot be added");
 	
 		
-		}
+		} 
 	database.close();
-	}/*
-public static void isClassmateOf(String subject, String predicate, String object)
-{	
-	
-	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
-	ObjectContainer database = Db4o.openFile("resources/Triples");
-	
-	Query exists = database.query();
-	exists.constrain(Triple.class);
-	exists.descend("subject").descend("name").constrain(object).and(exists.descend("predicate").descend("propertyname").constrain(predicate)).and(exists.descend("object").descend("name").constrain(subject));
-	ObjectSet<Triple> obj_set = exists.execute();
-	
-	if(!(obj_set.isEmpty())) {
-		System.out.println("Entry already exists");
-		for(Triple tr: obj_set) {
-			System.out.println(tr);
-		}
 	}
-	else {
-		Query query = database.query();
-		query.constrain(Triple.class);
-		query.descend("predicate").descend("propertyname").constrain(predicate);
-		ObjectSet<Triple> objset = query.execute();
-		int flag = 0;
-		for (Triple tr : objset) {
-			Student stud1 = (Student) tr.getSubject();
-			Student stud2 = (Student) tr.getObject();
-			if (stud1.getName().equals(subject) && stud2.getName().equals(object)) {
-				flag = 1;
-				ObjectProperty isClassmateOf = new ObjectProperty(defaultPrefix + "isClassmateOf",
-						":isClassmateOf");
-				Triple<Student, ObjectProperty, Student> triple = new Triple<Student, ObjectProperty, Student>(
-						stud2, isClassmateOf, stud1);
-				database.store(triple);
-				System.out.println(stud2.getName() + "  " + isClassmateOf.getPropertyname() + "  " + stud1.getName()
-						+ "is successfully added in DB");
-			}
-		}
-		if (flag == 0)
-			System.out.println("No such Entry");
-	}
-	database.close();
-}
-
-public static void colleagueOf(String Subject, String predicate, String Object)
-{
-	String defaultPrefix = "http://www.semanticweb.org/deepakd/ontologies/2019/3/university#";
-	ObjectContainer database = Db4o.openFile("resources/Triples");
-	
-	Query exists = database.query();
-	exists.constrain(Triple.class);
-	exists.descend("subject").descend("name").constrain(Object).and(exists.descend("predicate").descend("propertyname").constrain(predicate)).and(exists.descend("object").descend("name").constrain(Subject));
-	ObjectSet<Triple> obj_set = exists.execute();
-	
-	if(!(obj_set.isEmpty())) {
-		//System.out.println("Entry already exists:");
-		for(Triple tr: obj_set) {
-			System.out.println("Entry already exists:"+tr);
-		}
-	}
-	
-	else {
-		Query query = database.query();
-		query.constrain(Triple.class);
-		query.descend("predicate").descend("propertyname").constrain(predicate);
-		ObjectSet<Triple> objset = query.execute();
-		int flag = 0;
-		for (Triple tr : objset) {
-			Professor prof1 = (Professor) tr.getSubject();
-			Professor prof2 = (Professor) tr.getObject();
-			if (prof1.getName().equals(Subject) && prof2.getName().equals(Object)) {
-				flag = 1;
-				ObjectProperty colleagueOf = new ObjectProperty(defaultPrefix + "colleagueOf", ":colleagueOf");
-				Triple<Professor, ObjectProperty, Professor> triple = new Triple<Professor, ObjectProperty, Professor>(
-						prof2, colleagueOf, prof1);
-				database.store(triple);
-				System.out.println(prof2.getName() + "  " + colleagueOf.getPropertyname() + "  " + prof1.getName()
-						+ "is successfully added in DB");
-			}
-		}
-		if (flag == 0)
-			System.out.println("No such Entry");
-	}
-	database.close();
-}*/
-}

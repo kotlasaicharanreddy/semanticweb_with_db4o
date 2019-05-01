@@ -22,15 +22,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#colleagueOf -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#colleagueOf">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#coordinates -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#coordinates">
@@ -73,6 +64,15 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isClassmateOf">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isColleagueOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#isColleagueOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
     </owl:ObjectProperty>
     
 
@@ -718,8 +718,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#RC">
         <rdf:type rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Teacher"/>
-        <colleagueOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#GSR"/>
         <coordinates rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Bachelor_of_Engineering"/>
+        <isColleagueOf rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#GSR"/>
         <publishes rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataWare_House_Systems"/>
         <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#DataBase_Management_System"/>
         <teaches rdf:resource="http://www.semanticweb.org/deepakd/ontologies/2019/3/university#Data_Modelling"/>

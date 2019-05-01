@@ -473,7 +473,7 @@ public class OwlApi_Class {
 			}
 		}
 		
-		OWLObjectProperty object_prop9 = fac.getOWLObjectProperty(IRI.create(pm.getDefaultPrefix(),"colleagueOf"));
+		OWLObjectProperty object_prop9 = fac.getOWLObjectProperty(IRI.create(pm.getDefaultPrefix(),"isColleagueOf"));
 		
 		for(Professor subject : professorlist)
 		{
@@ -484,12 +484,12 @@ public class OwlApi_Class {
 			{
 				for(OWLNamedIndividual obj : prof)
 				{
-					ObjectProperty colleagueOf = new ObjectProperty(object_prop9.toStringID(), pm.getShortForm(object_prop9));
+					ObjectProperty iscolleagueOf = new ObjectProperty(object_prop9.toStringID(), pm.getShortForm(object_prop9));
 					String namespace = obj.toStringID();
 					Professor prof2= new Professor(namespace,null,null,null,null);
 					int index = professorlist.indexOf(prof2);
 					Professor object = professorlist.get(index);
-					Triple<Professor,ObjectProperty,Professor> triple = new Triple<Professor,ObjectProperty,Professor>(subject,colleagueOf,object);
+					Triple<Professor,ObjectProperty,Professor> triple = new Triple<Professor,ObjectProperty,Professor>(subject,iscolleagueOf,object);
 					//System.out.println(triple);
 					database.store(triple);
 					triplestore.addTriple(triple);
